@@ -4,19 +4,73 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Strada Weather</title>
 </head>
 <body>
     <div class="container">
-
         <div class="wrapper">
             <header>
-                <div class="search"></div>
+                <div class="search">
+                    <input type="text" name="search" id="search_input" placeholder="Enter your city"><button class="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
             </header>
             <div class="main">
-                <div class="left"></div>
-                <div class="right"></div>
+                <div class="left left-now left-hidden">
+                    <div class="main-weather">
+                        <div class="main-weather__temp">14<span>&#176;</span></div>
+                        <div class="main-weather__logo"><i class="fa-solid fa-cloud"></i></div>
+                        <div class="main-weather__bottom">
+                            <div class="main-weather__town">Aktobe</div>
+                            <div class="main-weather__save-town"><i class="fa-regular fa-heart"></i></div>
+                        </div>
+
+                    </div>
+                    <div class="toggle-btns">
+                        <div class="toggle-btn toggle-btn__black">now</div>
+                        <div class="toggle-btn">details</div>
+                        <div class="toggle-btn">forecast</div>
+                    </div>
+                </div>
+                <div class="left left-details">
+                    <div class="main-weather">
+                        <!-- <div class="main-weather__temp">14<span>&#176;</span></div>
+                        <div class="main-weather__logo"><i class="fa-solid fa-cloud"></i></div>
+                        <div class="main-weather__bottom">
+                            <div class="main-weather__town">Aktobe</div>
+                            <div class="main-weather__save-town"><i class="fa-regular fa-heart"></i></div>
+                        </div> -->
+
+                    </div>
+                    <div class="toggle-btns">
+                        <div class="toggle-btn">now</div>
+                        <div class="toggle-btn toggle-btn__black">details</div>
+                        <div class="toggle-btn">forecast</div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="locations-header">Added Locations:</div>
+                    <div class="towns-list">
+                        <ul>
+                            <!-- *********************************************************
+                            при большом количестве городов, вылезает за контейнер
+                            ********************************************************* -->
+                            <li>Town</li>
+                            <li>Town</li>
+                            <li>Town</li>
+                            <li>Town</li>
+                            <li>Town</li>
+                            <li>Town</li>
+                            <li>Town</li>
+                            <li>Town</li>
+                            <li>Town</li>
+                            <li>Town</li>
+                            <li>Town</li>
+                            <li>Town</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

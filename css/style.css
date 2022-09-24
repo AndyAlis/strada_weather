@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: 1px solid red; */
+}
+
+body {
+    height: 100vh;
+    background-color: #E5E5E5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    width: 621px;
+    height: 462px;
+    background-color: white;
+    padding: 14px 9px 13px 12px;
+}
+
+.wrapper {
+    border: 1px solid black;
+    width: 600px;
+    height: 435px;
+    display: flex;
+    flex-direction: column;
+}
+
+.search {
+    display: flex;
+    justify-content: space-between;
+    height: 45px;
+    width: 100%;
+    border-bottom: 1px solid black;
+
+}
+
+#search_input {
+    display: block;
+    height: 100%;
+    width: 90%;
+    border: none;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    padding-left: 1rem;
+}
+
+#search_input:focus {
+    outline: none;
+}
+
+.search_btn {
+    height: 100%;
+    background: transparent;
+    color:#696969;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    margin-right: 22px;
+
+}
+
+.main {
+    flex: 1;
+    display: flex;
+      
+}
+
+.left, .right {
+    width: 50%;
+}
+
+.left {
+    border-right: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    /* background-color: aqua;  */
+}
+
+.main-weather {
+    flex: 1;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-weather__temp {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 70px;
+    line-height: 82px;
+    color: #000000;
+    margin-top: 20px;
+    margin-left: 23px;
+}
+
+.main-weather__logo {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+}
+
+.main-weather__bottom {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    padding-left: 12px;
+    padding-right: 26px;
+}
+
+.main-weather__town {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: black;
+}
+
+.main-weather__save-town {
+    font-size: 22px;
+    opacity: .54;
+    cursor: pointer;
+}
+
+.toggle-btns {
+    display: flex;
+    justify-content: stretch;
+    height: 45px;
+    justify-self: end;
+}
+
+.toggle-btn {
+    width: 33.33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    cursor: pointer;
+}
+
+.toggle-btn__black {
+    background-color: #000000;
+    color: #FFF;
+}
+
+.toggle-btn:not(:last-child) {
+    border-right: 1px solid black;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+}
+
+.locations-header {
+    height: 68px;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding-left: 18px;
+    padding-bottom: 7px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: #000000;
+    text-transform: capitalize;
+}
+
+.towns-list {
+    padding-left: 18px;
+    padding-top: 35px;
+    flex: 1;
+    display: flex;
+    /* вот тут косяк! */
+    max-height: 321px;
+}
+
+.towns-list ul {
+    list-style-type: none;
+    overflow: auto;
+    flex: 1;
+}
+
+.towns-list ul li {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.left-hidden {
+    display: none;
+}
