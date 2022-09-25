@@ -85,7 +85,7 @@ body {
     /* background-color: aqua;  */
 }
 
-.main-weather {
+.main-weather, .left-forecast__day {
     flex: 1;
     border-bottom: 1px solid black;
     display: flex;
@@ -186,7 +186,7 @@ body {
 
 .towns-list {
     padding-left: 18px;
-    padding-top: 35px;
+    
     flex: 1;
     display: flex;
     /* вот тут косяк! */
@@ -194,9 +194,12 @@ body {
 }
 
 .towns-list ul {
+    padding-top: 35px;
     list-style-type: none;
     overflow: auto;
     flex: 1;
+    border-bottom: 1px solid black;
+
 }
 
 .towns-list ul li {
