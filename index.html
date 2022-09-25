@@ -17,7 +17,7 @@
                 </div>
             </header>
             <div class="main">
-                <div class="left left-now left-hidden">
+                <div class="left left-now">
                     <div class="main-weather">
                         <div class="main-weather__temp">14<span>&#176;</span></div>
                         <div class="main-weather__logo"><i class="fa-solid fa-cloud"></i></div>
@@ -28,12 +28,12 @@
 
                     </div>
                     <div class="toggle-btns">
-                        <div class="toggle-btn toggle-btn__black">now</div>
-                        <div class="toggle-btn">details</div>
-                        <div class="toggle-btn">forecast</div>
+                        <div class="toggle-btn toggle-btn__now toggle-btn__black">now</div>
+                        <div class="toggle-btn toggle-btn__details">details</div>
+                        <div class="toggle-btn toggle-btn__forecast">forecast</div>
                     </div>
                 </div>
-                <div class="left left-details">
+                <div class="left left-details left-hidden">
                     <div class="details-weather">
                         <div class="details__town">Aktobe</div>
                         
@@ -46,9 +46,23 @@
 
                     </div>
                     <div class="toggle-btns">
-                        <div class="toggle-btn">now</div>
-                        <div class="toggle-btn toggle-btn__black">details</div>
-                        <div class="toggle-btn">forecast</div>
+                        <div class="toggle-btn toggle-btn__now">now</div>
+                        <div class="toggle-btn toggle-btn__details toggle-btn__black">details</div>
+                        <div class="toggle-btn toggle-btn__forecast">forecast</div>
+                    </div>
+                </div>
+                <div class="left left-forecast left-hidden">
+                    <div class="details-weather">
+                        <div class="details__town">Aktobe</div>
+                        
+                        <div class="details_text">Make it later! </div>
+
+
+                    </div>
+                    <div class="toggle-btns">
+                        <div class="toggle-btn toggle-btn__now">now</div>
+                        <div class="toggle-btn toggle-btn__details">details</div>
+                        <div class="toggle-btn toggle-btn__forecast toggle-btn__black">forecast</div>
                     </div>
                 </div>
                 <div class="right">
@@ -76,5 +90,6 @@
             </div>
         </div>
     </div>
+    <script src="./main.js"></script>
 </body>
 </html>
