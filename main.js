@@ -68,7 +68,7 @@ async function doSearch() {
     clearTimeout(delayTimer);
     delayTimer = setTimeout(function() {
         if((inputSearch.value.trim().length) >= 3) {
-            fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${inputSearch.value}&limit=5&appid=${openWeatherMapKey}`)
+            fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${inputSearch.value}&limit=5&appid=${openWeatherMapKey}`)
             .then((response) => {
                 return response.json();
             })
@@ -118,7 +118,7 @@ function render(item) {
     currentTempDetails.innerText = Math.round(item.main.temp);
     currentFeelsDetails.innerText = Math.round(item.main.feels_like);
     currentWeatherDetails.innerText = item.weather[0].main;
-    currentLogoNow.src = `http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`;
+    currentLogoNow.src = `https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`;
 
     currentSunriseDetails.innerText = "Доделать!";
     currentSunsetDetails.innerText = "Доелать!";
