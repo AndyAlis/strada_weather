@@ -16,18 +16,18 @@
                     <input type="text" name="search" id="search_input" placeholder="Enter your city"><button class="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
                 <ul class="search_results search_results-hidden">
-                    <li>Moscow, RU</li>
+                    <!-- <li>Moscow, RU</li>
                     <li>New York, US</li>
-                    <li>Tver, RU</li>
+                    <li>Tver, RU</li> -->
                 </ul>
             </header>
             <div class="main">
                 <div class="left left-now">
                     <div class="main-weather">
-                        <div class="main-weather__temp"><span id="main-weather__temp">14</span>&#176;</div>
-                        <div class="main-weather__logo"><img id="main-weather__logo" src="https://openweathermap.org/img/wn/10d@2x.png" alt=""></div>
+                        <div class="main-weather__temp"><span id="main-weather__temp"></span></div>
+                        <div class="main-weather__logo"></div>
                         <div class="main-weather__bottom">
-                            <div class="main-weather__town">Aktobe</div>
+                            <div class="main-weather__town"></div>
                             <div class="main-weather__save-town"><i class="fa-regular fa-heart"></i></div>
                         </div>
 
@@ -40,13 +40,13 @@
                 </div>
                 <div class="left left-details left-hidden">
                     <div class="details-weather">
-                        <div class="details__town">Aktobe</div>
+                        <div class="details__town"></div>
                         
-                        <div class="details_text">Temperature: <span class="details_temp">14</span>&#176;</div>
-                        <div class="details_text">Feels like: <span class="details_feels">10</span>&#176;</div>
-                        <div class="details_text">Weather: <span class="details_weather">Clouds</span></div>
-                        <div class="details_text">Sunrise: <span class="details_sunrise">03:21</span></div>
-                        <div class="details_text">Sunset: <span class="details_sunset">18:54</span></div>
+                        <div class="details_text">Temperature: <span class="details_temp"></span></div>
+                        <div class="details_text">Feels like: <span class="details_feels"></span></div>
+                        <div class="details_text">Weather: <span class="details_weather"></span></div>
+                        <div class="details_text">Sunrise: <span class="details_sunrise"></span></div>
+                        <div class="details_text">Sunset: <span class="details_sunset"></span></div>
 
 
                     </div>
@@ -143,11 +143,9 @@
 
                 <div class="right">
                     <div class="locations-header">Added Locations:</div>
-                    <div class="towns-list">
-                        <ul>
-                            <!-- *********************************************************
-                            при большом количестве городов, вылезает за контейнер
-                            ********************************************************* -->
+                    <div class="towns-list-container">
+                        <ul class="towns-list">
+                            <!-- <li>Town <button class="delete-town_btn"><i class="fa-solid fa-xmark"></i></button></li>
                             <li>Town</li>
                             <li>Town</li>
                             <li>Town</li>
@@ -158,8 +156,7 @@
                             <li>Town</li>
                             <li>Town</li>
                             <li>Town</li>
-                            <li>Town</li>
-                            <li>Town</li>
+                            <li>Town</li> -->
                         </ul>
                     </div>
                 </div>

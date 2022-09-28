@@ -1,4 +1,6 @@
 openWeatherMapKey = "0ffa5a62469461b23ba6b8586a9aa0c9";
+const townsList = [{id: "1", name: "Moscow", country: "RU", lon: "1", lat: "1"}, {id: "2", name: "Saint-Petersburg", country: "RU", lon: "2", lat: "2"}]
+// openWeatherMapKey = "0ffa5a62469461b23ba6b8586a9a";
 //api call for lon, lat
 // http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
 //api call for current weather
@@ -18,10 +20,12 @@ const tabForecast = document.querySelector(".left-forecast");
 const inputSearch = document.getElementById("search_input");
 //search results
 const searchResults = document.querySelector(".search_results");
+const searchBtn = document.querySelector(".search_btn");
 //select data on now tab
 const currentTempNow = document.getElementById("main-weather__temp");
-const currentLogoNow = document.getElementById("main-weather__logo");
+const currentLogoNow = document.querySelector(".main-weather__logo");
 const currentTownNow = document.querySelector(".main-weather__town");
+const currentSaveTownNow = document.querySelector(".main-weather__save-town");
 //select data on details tab
 const currentTownDetails = document.querySelector(".details__town");
 const currentTempDetails = document.querySelector(".details_temp");
@@ -73,15 +77,17 @@ async function doSearch() {
                 return response.json();
             })
             .then((data) => {
+                console.log("Сработало!");
                 console.log(data);
+                
                 if (data.length > 0) {
                     searchResults.innerHTML = "";
                     data.forEach(item => {
                         let li = document.createElement("li");
                         li.innerText = `${item.name}, ${item.country}, ${item.state}`;
                         li.addEventListener("click", () => {
-                            checkWeather(item.lon, item.lat);
-                            console.log(item.name);
+                            checkWeather(item.lon, item.lat, item.name);
+                            // console.log(item.name);
                         })
                         searchResults.append(li);
                     })
@@ -89,9 +95,11 @@ async function doSearch() {
                 }
                         
                 else {
+                    searchResults.classList.remove("search_results-hidden");
                     searchResults.innerHTML = "<li>We could not find this town. Please type again.</li>";
                 }
-            });  
+            })
+            .catch(() => alert('Ooops! Smth goes wrong! First fetch'));  
         }
         else {
             searchResults.classList.add("search_results-hidden");
@@ -100,37 +108,43 @@ async function doSearch() {
     }, 1000);
 }
 
-async function checkWeather(lon, lat) {
+async function checkWeather(lon, lat, name) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openWeatherMapKey}&units=metric`)
     .then((response) => {
         return response.json();
     })
     .then((data) => {
         searchResults.classList.add("search_results-hidden");
-        render(data);
-    });
+        render(data, name);
+    })
+    .catch(() => alert('Ooops! Smth goes wrong! Second Fetch'));
 }
 
-function render(item) {
-    currentTempNow.innerText = Math.round(item.main.temp);
-    currentTownNow.innerText = item.name;
-    currentTownDetails.innerText = item.name;
-    currentTempDetails.innerText = Math.round(item.main.temp);
-    currentFeelsDetails.innerText = Math.round(item.main.feels_like);
+function render(item, name) {
+    currentTempNow.innerText = Math.round(item.main.temp) + " °";
+    currentTownNow.innerText = `${name}, ${item.sys.country}`;
+    currentTownDetails.innerText = `${name}, ${item.sys.country}`;
+    currentTempDetails.innerText = Math.round(item.main.temp) + " °";
+    currentFeelsDetails.innerText = Math.round(item.main.feels_like) + " °";
     currentWeatherDetails.innerText = item.weather[0].main;
-    currentLogoNow.src = `https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`;
+    currentLogoNow.innerHTML = `<img id="main-weather__logo" src="https://openweathermap.org/img/wn/${item.weather[0].icon}@4x.png" alt="">`;
+    
+    // currentLogoNow.src = ``;
 
-    currentSunriseDetails.innerText = "Доделать!";
-    currentSunsetDetails.innerText = "Доелать!";
+    currentSunriseDetails.innerText = timeFromSec(item.sys.sunrise);
+    currentSunsetDetails.innerText = timeFromSec(item.sys.sunset);
 
+    renderTownsList();
 }
 
+function timeFromSec(seconds) {
+    let date = new Date(seconds * 1000);
+    let result = `${date.getHours()}:${date.getMinutes()}`;
+    return result;
+}
 
-// const currentLogoNow = document.querySelector(".main-weather__logo");
+function renderTownsList() {
 
-
-
-
-// const currentWeatherDetails = document.querySelector(".details_weather");
+};
 
 

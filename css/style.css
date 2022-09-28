@@ -44,7 +44,7 @@ body {
     line-height: 21px;
     padding: 5px 2rem;
     position: absolute;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, .2);
+    box-shadow: 0git pullpx 5px 10px rgba(0, 0, 0, .2);
     box-shadow: 
 }
 
@@ -141,9 +141,14 @@ body {
 .main-weather__logo {
     flex: 1;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     font-size: 4rem;
+}
+
+#main-weather__logo {
+    width: 150px;
+    height: 150px;
 }
 
 .main-weather__bottom {
@@ -219,7 +224,7 @@ body {
     text-transform: capitalize;
 }
 
-.towns-list {
+.towns-list-container {
     padding-left: 18px;
     
     flex: 1;
@@ -228,7 +233,7 @@ body {
     max-height: 321px;
 }
 
-.towns-list ul {
+.towns-list-container ul {
     padding-top: 35px;
     list-style-type: none;
     overflow: auto;
@@ -237,13 +242,29 @@ body {
 
 }
 
-.towns-list ul li {
+.towns-list-container ul li {
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
     line-height: 28px;
     margin-bottom: 15px;
     cursor: pointer;
+    display: flex;
+    align-items: baseline;
+    
+}
+
+.delete-town_btn {
+    margin-left: 8px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    font-size: 1.2rem;
+    display: none;
+}
+
+.towns-list-container ul li:hover .delete-town_btn {
+    display: block;
 }
 
 .left-hidden {
