@@ -33,7 +33,9 @@ const currentFeelsDetails = document.querySelector(".details_feels");
 const currentWeatherDetails = document.querySelector(".details_weather");
 const currentSunriseDetails = document.querySelector(".details_sunrise");
 const currentSunsetDetails = document.querySelector(".details_sunset");
-
+//select towns list
+const townsListUl = document.querySelector(".towns-list");
+const townsListTemplate = document.getElementById("templateForTownsList");
 
 
 
@@ -77,8 +79,8 @@ async function doSearch() {
                 return response.json();
             })
             .then((data) => {
-                console.log("Сработало!");
-                console.log(data);
+                // console.log("Сработало!");
+                // console.log(data);
                 
                 if (data.length > 0) {
                     searchResults.innerHTML = "";
@@ -144,7 +146,13 @@ function timeFromSec(seconds) {
 }
 
 function renderTownsList() {
+    let li = townsListTemplate.content.cloneNode(true);
+    townList.forEach(town => {
+        li.getElementById("templateForTownsList_li").innerText = `${town.name}, ${town.country.toUpperCase()}`;
 
+        // закончил тут, думать не могу
+    })
 };
 
 
+renderTownsList();
