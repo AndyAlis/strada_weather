@@ -1,5 +1,6 @@
 openWeatherMapKey = "0ffa5a62469461b23ba6b8586a9aa0c9";
-const townsList = [{id: "1", name: "Moscow", country: "RU", lon: "1", lat: "1"}, {id: "2", name: "Saint-Petersburg", country: "RU", lon: "2", lat: "2"}]
+// const townsListArray = [{id: "1", name: "Moscow", country: "RU", lon: "1", lat: "1"}, {id: "2", name: "Saint-Petersburg", country: "RU", lon: "2", lat: "2"}];
+const townsListArray = [];
 // openWeatherMapKey = "0ffa5a62469461b23ba6b8586a9a";
 //api call for lon, lat
 // http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
@@ -34,9 +35,10 @@ const currentWeatherDetails = document.querySelector(".details_weather");
 const currentSunriseDetails = document.querySelector(".details_sunrise");
 const currentSunsetDetails = document.querySelector(".details_sunset");
 //select towns list
-const townsListUl = document.querySelector(".towns-list");
+const townsList = document.querySelector(".towns-list-container");
 const townsListTemplate = document.getElementById("templateForTownsList");
-
+//select add town btn
+const addTownBtn = document.querySelector(".main-weather__save-town");
 
 
 
@@ -101,7 +103,7 @@ async function doSearch() {
                     searchResults.innerHTML = "<li>We could not find this town. Please type again.</li>";
                 }
             })
-            .catch(() => alert('Ooops! Smth goes wrong! First fetch'));  
+            .catch((err) => alert(err + ' Ooops! Smth goes wrong! First fetch'));  
         }
         else {
             searchResults.classList.add("search_results-hidden");
@@ -119,7 +121,7 @@ async function checkWeather(lon, lat, name) {
         searchResults.classList.add("search_results-hidden");
         render(data, name);
     })
-    .catch(() => alert('Ooops! Smth goes wrong! Second Fetch'));
+    .catch((err) => alert(err + ' Ooops! Smth goes wrong! Second Fetch'));
 }
 
 function render(item, name) {
@@ -131,10 +133,13 @@ function render(item, name) {
     currentWeatherDetails.innerText = item.weather[0].main;
     currentLogoNow.innerHTML = `<img id="main-weather__logo" src="https://openweathermap.org/img/wn/${item.weather[0].icon}@4x.png" alt="">`;
     
-    // currentLogoNow.src = ``;
 
     currentSunriseDetails.innerText = timeFromSec(item.sys.sunrise);
     currentSunsetDetails.innerText = timeFromSec(item.sys.sunset);
+
+    addTownBtn.addEventListener("click", () => {
+        addTownToArray(item);
+    })
 
     renderTownsList();
 }
@@ -146,13 +151,24 @@ function timeFromSec(seconds) {
 }
 
 function renderTownsList() {
-    let li = townsListTemplate.content.cloneNode(true);
-    townList.forEach(town => {
-        li.getElementById("templateForTownsList_li").innerText = `${town.name}, ${town.country.toUpperCase()}`;
+    townsList.innerHTML = "";
+    
+    townsListArray.forEach(town => {
+        let li = townsListTemplate.content.cloneNode(true);
+        let townName = li.querySelector(".towns-list_town-name");
+        townName.setAttribute("id", town.id);
+        let delBtn = li.querySelector(".delete-town_btn");
+        townName.innerText = `${town.name}, ${town.country.toUpperCase()}`;
 
-        // закончил тут, думать не могу
-    })
+        townsList.append(li);
+        
 };
 
 
+function addTownToArray(item) {
+    console.log(item);
+}
+
 renderTownsList();
+
+//нужно доделать функцию добавления города в массив, id вроде есть уникальный

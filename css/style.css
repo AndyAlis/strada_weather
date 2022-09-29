@@ -226,23 +226,17 @@ body {
 
 .towns-list-container {
     padding-left: 18px;
-    
+    padding-top: 20px;
     flex: 1;
     display: flex;
+    flex-direction: column;
     /* вот тут косяк! */
     max-height: 321px;
-}
-
-.towns-list-container ul {
-    padding-top: 35px;
-    list-style-type: none;
     overflow: auto;
-    flex: 1;
-    border-bottom: 1px solid black;
-
 }
 
-.towns-list-container ul li {
+.towns-list_town-container {
+    
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -251,11 +245,10 @@ body {
     cursor: pointer;
     display: flex;
     align-items: baseline;
-    
 }
 
 .delete-town_btn {
-    margin-left: 8px;
+    margin-left: 12px;
     cursor: pointer;
     border: none;
     background: transparent;
@@ -263,7 +256,7 @@ body {
     display: none;
 }
 
-.towns-list-container ul li:hover .delete-town_btn {
+.towns-list_town-container:hover .delete-town_btn {
     display: block;
 }
 
