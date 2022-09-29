@@ -138,7 +138,7 @@ function render(item, name) {
     currentSunsetDetails.innerText = timeFromSec(item.sys.sunset);
 
     addTownBtn.addEventListener("click", () => {
-        addTownToArray(item);
+        addTownToArray(item, name);
     })
 
     renderTownsList();
@@ -156,19 +156,41 @@ function renderTownsList() {
     townsListArray.forEach(town => {
         let li = townsListTemplate.content.cloneNode(true);
         let townName = li.querySelector(".towns-list_town-name");
-        townName.setAttribute("id", town.id);
         let delBtn = li.querySelector(".delete-town_btn");
+        delBtn.setAttribute("id", town.id);
+        delBtn.addEventListener("click", function () {
+            deleteTownFromArray(Number(this.getAttribute("id")));
+        })
         townName.innerText = `${town.name}, ${town.country.toUpperCase()}`;
 
         townsList.append(li);
+    });
         
 };
 
 
-function addTownToArray(item) {
-    console.log(item);
+function addTownToArray(item, name) {
+    let town = {
+        id: item.id,
+        name: name,
+        country: item.sys.country,
+        lon: item.coord.lon,
+        lat: item.coord.lat,
+    }
+
+    if(townsListArray.some(element => element.id === item.id)){}
+    else townsListArray.push(town);
+    renderTownsList();
+    
+    // console.log(item);
 }
 
+function deleteTownFromArray(id) {
+    let index = townsListArray.findIndex(item => item.id === id);
+    townsListArray.splice(index, 1);
+    renderTownsList();
+
+}
 renderTownsList();
 
 //нужно доделать функцию добавления города в массив, id вроде есть уникальный
