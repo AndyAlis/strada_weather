@@ -25,8 +25,8 @@ const searchBtn = document.querySelector(".search_btn");
 //select data on now tab
 const currentTempNow = document.getElementById("main-weather__temp");
 const currentLogoNow = document.querySelector(".main-weather__logo");
-const currentTownNow = document.querySelector(".main-weather__town");
-const currentSaveTownNow = document.querySelector(".main-weather__save-town");
+
+// const currentSaveTownNow = document.querySelector(".main-weather__save-town");
 //select data on details tab
 const currentTownDetails = document.querySelector(".details__town");
 const currentTempDetails = document.querySelector(".details_temp");
@@ -38,8 +38,7 @@ const currentSunsetDetails = document.querySelector(".details_sunset");
 const townsList = document.querySelector(".towns-list-container");
 const townsListTemplate = document.getElementById("templateForTownsList");
 //select add town btn
-const addTownBtn = document.querySelector(".main-weather__save-town");
-
+const saveBtnTemplate = document.getElementById("saveBtn");
 
 
 //set listeners to toggle between tabs
@@ -126,7 +125,7 @@ async function checkWeather(lon, lat, name) {
 
 function render(item, name) {
     currentTempNow.innerText = Math.round(item.main.temp) + " °";
-    currentTownNow.innerText = `${name}, ${item.sys.country}`;
+    // currentTownNow.innerText = `${name}, ${item.sys.country}`;
     currentTownDetails.innerText = `${name}, ${item.sys.country}`;
     currentTempDetails.innerText = Math.round(item.main.temp) + " °";
     currentFeelsDetails.innerText = Math.round(item.main.feels_like) + " °";
@@ -136,10 +135,19 @@ function render(item, name) {
 
     currentSunriseDetails.innerText = timeFromSec(item.sys.sunrise);
     currentSunsetDetails.innerText = timeFromSec(item.sys.sunset);
-
-    addTownBtn.addEventListener("click", () => {
+    
+    let saveBtn  = saveBtnTemplate.content.cloneNode(true);
+    const currentTownNow = saveBtn.querySelector(".main-weather__town");
+    let saveDiv = saveBtn.querySelector(".main-weather__save-town");
+    
+    currentTownNow.innerText = `${name}, ${item.sys.country}`;
+    saveDiv.addEventListener("click", () => {
         addTownToArray(item, name);
     })
+
+    document.querySelector(".main-weather__bottom").innerHTML = "";
+    document.querySelector(".main-weather__bottom").append(currentTownNow);
+    document.querySelector(".main-weather__bottom").append(saveDiv);
 
     renderTownsList();
 }
@@ -158,6 +166,11 @@ function renderTownsList() {
         let townName = li.querySelector(".towns-list_town-name");
         let delBtn = li.querySelector(".delete-town_btn");
         delBtn.setAttribute("id", town.id);
+        
+        townName.addEventListener("click", function() {
+            inputSearch.value = town.name;
+            checkWeather(town.lon, town.lat, town.name);//checkWeather(lon, lat, name)
+        });
         delBtn.addEventListener("click", function () {
             deleteTownFromArray(Number(this.getAttribute("id")));
         })
