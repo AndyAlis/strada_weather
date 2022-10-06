@@ -1,6 +1,8 @@
-openWeatherMapKey = "0ffa5a62469461b23ba6b8586a9aa0c9";
+import saveArray from './save.js';
+
+const openWeatherMapKey = "0ffa5a62469461b23ba6b8586a9aa0c9";
 // const townsListArray = [{id: "1", name: "Moscow", country: "RU", lon: "1", lat: "1"}, {id: "2", name: "Saint-Petersburg", country: "RU", lon: "2", lat: "2"}];
-const townsListArray = [];
+const townsListArray = JSON.parse(localStorage.getItem('arr')) || [];
 // openWeatherMapKey = "0ffa5a62469461b23ba6b8586a9a";
 //api call for lon, lat
 // http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
@@ -193,6 +195,7 @@ function addTownToArray(item, name) {
 
     if(townsListArray.some(element => element.id === item.id)){}
     else townsListArray.push(town);
+    saveArray(townsListArray);
     renderTownsList();
     
     // console.log(item);
@@ -206,4 +209,3 @@ function deleteTownFromArray(id) {
 }
 renderTownsList();
 
-//нужно доделать функцию добавления города в массив, id вроде есть уникальный
