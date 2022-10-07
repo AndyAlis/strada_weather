@@ -1,8 +1,14 @@
-import saveArray from './save.js';
+import {saveArray, saveCurrentTownToLS} from './save.js';
 
 const openWeatherMapKey = "0ffa5a62469461b23ba6b8586a9aa0c9";
 // const townsListArray = [{id: "1", name: "Moscow", country: "RU", lon: "1", lat: "1"}, {id: "2", name: "Saint-Petersburg", country: "RU", lon: "2", lat: "2"}];
 const townsListArray = JSON.parse(localStorage.getItem('arr')) || [];
+const currentTownFromLS = JSON.parse(localStorage.getItem('town'));
+
+if(currentTownFromLS) {
+    checkWeather(currentTownFromLS.lon, currentTownFromLS.lat, currentTownFromLS.name);
+}
+
 // openWeatherMapKey = "0ffa5a62469461b23ba6b8586a9a";
 //api call for lon, lat
 // http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
@@ -92,6 +98,8 @@ async function doSearch() {
                         li.innerText = `${item.name}, ${item.country}, ${item.state}`;
                         li.addEventListener("click", () => {
                             checkWeather(item.lon, item.lat, item.name);
+                            saveCurrentTownToLS(item.lon, item.lat, item.name);
+                            
                             // console.log(item.name);
                         })
                         searchResults.append(li);
@@ -172,6 +180,7 @@ function renderTownsList() {
         townName.addEventListener("click", function() {
             inputSearch.value = town.name;
             checkWeather(town.lon, town.lat, town.name);//checkWeather(lon, lat, name)
+            saveCurrentTownToLS(town.lon, town.lat, town.name);
         });
         delBtn.addEventListener("click", function () {
             deleteTownFromArray(Number(this.getAttribute("id")));
@@ -204,6 +213,7 @@ function addTownToArray(item, name) {
 function deleteTownFromArray(id) {
     let index = townsListArray.findIndex(item => item.id === id);
     townsListArray.splice(index, 1);
+    saveArray(townsListArray);
     renderTownsList();
 
 }
