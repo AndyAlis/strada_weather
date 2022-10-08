@@ -186,7 +186,7 @@ function renderTownsList() {
         
         townName.addEventListener("click", function() {
             inputSearch.value = town.name;
-            checkWeather(town.lon, town.lat, town.name);//checkWeather(lon, lat, name)
+            checkWeather(town.lon, town.lat, town.name);
             saveCurrentTownToLS(town.lon, town.lat, town.name);
         });
         delBtn.addEventListener("click", function () {

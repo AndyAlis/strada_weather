@@ -16,9 +16,7 @@
                     <input type="text" name="search" id="search_input" placeholder="Enter your city"><button class="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
                 <ul class="search_results search_results-hidden">
-                    <!-- <li>Moscow, RU</li>
-                    <li>New York, US</li>
-                    <li>Tver, RU</li> -->
+                    
                 </ul>
             </header>
             <div class="main">
@@ -26,17 +24,16 @@
                     <div class="main-weather">
                         <div class="main-weather__temp"><span id="main-weather__temp"></span></div>
                         <div class="main-weather__logo"></div>
-                        <div class="main-weather__bottom">
-                            <!-- <div class="main-weather__town"></div> -->
-                            <!-- <div class="main-weather__save-town"><i class="fa-regular fa-heart"></i></div> -->
-                        </div>
+                        <div class="main-weather__bottom"></div>
 
                     </div>
+
                     <div class="toggle-btns">
                         <div class="toggle-btn toggle-btn__now toggle-btn__black">now</div>
                         <div class="toggle-btn toggle-btn__details">details</div>
                         <div class="toggle-btn toggle-btn__forecast">forecast</div>
                     </div>
+
                 </div>
                 <div class="left left-details left-hidden">
                     <div class="details-weather">
@@ -59,48 +56,32 @@
                 <div class="left left-forecast left-hidden">
                     <div class="left-forecast__day">
                         <div class="forecast__town">Aktobe</div>
-                       
-                        <div class="forecast-details">
-                            <div class="forecast-details__top">
-                                <div class="forecast-details__top-date">17 May</div>
-                                <div class="forecast-details__top-time">12:00</div>
-                            </div>
-                            
-                            <div class="forecast-details__bottom">
-                                <div class="forecast-details__bottom-left">
-                                    <div class="forecast-details__text">Temperature: <span class="forecast-details_temp">14&#176;</span></div>
-                                    <div class="forecast-details__text">Feels like: <span class="forecast-details_temp">10&#176;</span></div>
-                                </div>
-                                <div class="forecast-details__bottom-right">
-                                    <div class="forecast-details__bottom-right-text">Rain</div>
-                                    <div class="forecast-details__bottom-right-icon"><i class="fa-solid fa-cloud-rain"></i></div>
-                                </div>
-                            </div>
+                        <div class="left-forecast__forecast">
+
                         </div>
-                        
-
-
                     </div>
+
+                    <!-- Toggle button -->
                     <div class="toggle-btns">
                         <div class="toggle-btn toggle-btn__now">now</div>
                         <div class="toggle-btn toggle-btn__details">details</div>
                         <div class="toggle-btn toggle-btn__forecast toggle-btn__black">forecast</div>
                     </div>
                 </div>
-
-
-
-
+                
+                <!-- Right part with towns list -->
                 <div class="right">
                     <div class="locations-header">Added Locations:</div>
                     <div class="towns-list-container">
                         <!-- here comes towns from array -->
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
     
+    <!-- Template for towns list item -->
     <template id="templateForTownsList">
         <div class="towns-list_town-container">
             <div class="towns-list_town-name">Town</div>
@@ -108,10 +89,13 @@
         </div>
     </template>
 
+    <!-- Template for save town button -->
     <template id="saveBtn">
         <div class="main-weather__town"></div>
         <div class="main-weather__save-town"><i class="fa-regular fa-heart"></i></div>
     </template>
+
+    <!-- Template for 3-5 days forecast item -->
     <template id="forecast-details">
         <div class="forecast-details">
             <div class="forecast-details__top">
@@ -126,7 +110,7 @@
                 </div>
                 <div class="forecast-details__bottom-right">
                     <div class="forecast-details__bottom-right-text">Rain</div>
-                    <div class="forecast-details__bottom-right-icon"><i class="fa-solid fa-cloud-rain"></i></div>
+                    <div class="forecast-details__bottom-right-icon"></div>
                 </div>
             </div>
         </div>
