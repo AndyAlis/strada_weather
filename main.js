@@ -1,4 +1,7 @@
-import {saveArray, saveCurrentTownToLS} from './save.js';
+
+import {saveArray, saveCurrentTownToLS} from './modules/save.js';
+import {getFiveDaysForecast} from './modules/asyncfunc.js';
+
 
 const openWeatherMapKey = "0ffa5a62469461b23ba6b8586a9aa0c9";
 // const townsListArray = [{id: "1", name: "Moscow", country: "RU", lon: "1", lat: "1"}, {id: "2", name: "Saint-Petersburg", country: "RU", lon: "2", lat: "2"}];
@@ -11,11 +14,11 @@ if(currentTownFromLS) {
 
 // openWeatherMapKey = "0ffa5a62469461b23ba6b8586a9a";
 //api call for lon, lat
-// http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
+// https://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
 //api call for current weather
 // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 //api call for 3 -5 days
-//api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+//https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
 // buttons for tabs
 const btnsNow = document.querySelectorAll(".toggle-btn__now");
@@ -131,6 +134,10 @@ async function checkWeather(lon, lat, name) {
         render(data, name);
     })
     .catch((err) => alert(err + ' Ooops! Smth goes wrong! Second Fetch'));
+
+    //test getFiveDaysForecast
+   getFiveDaysForecast(lon, lat, name, openWeatherMapKey);
+    
 }
 
 function render(item, name) {

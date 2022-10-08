@@ -77,57 +77,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="forecast-details">
-                            <div class="forecast-details__top">
-                                <div class="forecast-details__top-date">17 May</div>
-                                <div class="forecast-details__top-time">12:00</div>
-                            </div>
                         
-                            <div class="forecast-details__bottom">
-                                <div class="forecast-details__bottom-left">
-                                    <div class="forecast-details__text">Temperature: <span class="forecast-details_temp">14&#176;</span></div>
-                                    <div class="forecast-details__text">Feels like: <span class="forecast-details_temp">10&#176;</span></div>
-                                </div>
-                                <div class="forecast-details__bottom-right">
-                                    <div class="forecast-details__bottom-right-text">Rain</div>
-                                    <div class="forecast-details__bottom-right-icon"><i class="fa-solid fa-cloud-rain"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="forecast-details">
-                            <div class="forecast-details__top">
-                                <div class="forecast-details__top-date">17 May</div>
-                                <div class="forecast-details__top-time">12:00</div>
-                            </div>
-                        
-                            <div class="forecast-details__bottom">
-                                <div class="forecast-details__bottom-left">
-                                    <div class="forecast-details__text">Temperature: <span class="forecast-details_temp">14&#176;</span></div>
-                                    <div class="forecast-details__text">Feels like: <span class="forecast-details_temp">10&#176;</span></div>
-                                </div>
-                                <div class="forecast-details__bottom-right">
-                                    <div class="forecast-details__bottom-right-text">Rain</div>
-                                    <div class="forecast-details__bottom-right-icon"><i class="fa-solid fa-cloud-rain"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="forecast-details">
-                            <div class="forecast-details__top">
-                                <div class="forecast-details__top-date">17 May</div>
-                                <div class="forecast-details__top-time">12:00</div>
-                            </div>
-                        
-                            <div class="forecast-details__bottom">
-                                <div class="forecast-details__bottom-left">
-                                    <div class="forecast-details__text">Temperature: <span class="forecast-details_temp">14&#176;</span></div>
-                                    <div class="forecast-details__text">Feels like: <span class="forecast-details_temp">10&#176;</span></div>
-                                </div>
-                                <div class="forecast-details__bottom-right">
-                                    <div class="forecast-details__bottom-right-text">Rain</div>
-                                    <div class="forecast-details__bottom-right-icon"><i class="fa-solid fa-cloud-rain"></i></div>
-                                </div>
-                            </div>
-                        </div>
 
 
                     </div>
@@ -144,38 +94,7 @@
                 <div class="right">
                     <div class="locations-header">Added Locations:</div>
                     <div class="towns-list-container">
-                        <!-- <div class="towns-list_town-container">
-                            <div class="towns-list_town-name">Town</div>
-                            <button class="delete-town_btn"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-                        <div class="towns-list_town-container">
-                            <div class="towns-list_town-name">Town</div>
-                            <button class="delete-town_btn"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-                        <div class="towns-list_town-container">
-                            <div class="towns-list_town-name">Town</div>
-                            <button class="delete-town_btn"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-                        <div class="towns-list_town-container">
-                            <div class="towns-list_town-name">Town</div>
-                            <button class="delete-town_btn"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-                        <div class="towns-list_town-container">
-                            <div class="towns-list_town-name">Town</div>
-                            <button class="delete-town_btn"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-                        <div class="towns-list_town-container">
-                            <div class="towns-list_town-name">Town</div>
-                            <button class="delete-town_btn"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-                        <div class="towns-list_town-container">
-                            <div class="towns-list_town-name">Town</div>
-                            <button class="delete-town_btn"><i class="fa-solid fa-xmark"></i></button>
-                        </div>
-                        <div class="towns-list_town-container">
-                            <div class="towns-list_town-name">Town</div>
-                            <button class="delete-town_btn"><i class="fa-solid fa-xmark"></i></button>
-                        </div> -->
+                        <!-- here comes towns from array -->
                     </div>
                 </div>
             </div>
@@ -192,6 +111,25 @@
     <template id="saveBtn">
         <div class="main-weather__town"></div>
         <div class="main-weather__save-town"><i class="fa-regular fa-heart"></i></div>
+    </template>
+    <template id="forecast-details">
+        <div class="forecast-details">
+            <div class="forecast-details__top">
+                <div class="forecast-details__top-date">17 May</div>
+                <div class="forecast-details__top-time">12:00</div>
+            </div>
+        
+            <div class="forecast-details__bottom">
+                <div class="forecast-details__bottom-left">
+                    <div class="forecast-details__text">Temperature: <span class="forecast-details_temp" id="block_temp">14&#176;</span></div>
+                    <div class="forecast-details__text">Feels like: <span class="forecast-details_temp" id="block_feels_temp">10&#176;</span></div>
+                </div>
+                <div class="forecast-details__bottom-right">
+                    <div class="forecast-details__bottom-right-text">Rain</div>
+                    <div class="forecast-details__bottom-right-icon"><i class="fa-solid fa-cloud-rain"></i></div>
+                </div>
+            </div>
+        </div>
     </template>
 
     <script type="module" src="./main.js"></script>
